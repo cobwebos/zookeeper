@@ -64,6 +64,11 @@ public class ServerConfig {
     protected long jvmPauseInfoThresholdMs;
     /** JVM Pause Monitor sleep time in ms */
     protected long jvmPauseSleepTimeMs;
+    
+    /**
+     * add zookeeper.admin.enableServer=false
+     */
+    protected  boolean zookeeperAdminEnableServer = false;
 
     /**
      * Parse arguments for server configuration
@@ -121,6 +126,7 @@ public class ServerConfig {
         metricsProviderConfiguration = config.getMetricsProviderConfiguration();
         listenBacklog = config.getClientPortListenBacklog();
         initialConfig = config.getInitialConfig();
+        zookeeperAdminEnableServer = config.isZookeeperAdminEnableServer();
     }
 
     public InetSocketAddress getClientPortAddress() {
@@ -173,4 +179,11 @@ public class ServerConfig {
         return listenBacklog;
     }
 
+	/**
+	 * @return the zookeeperAdminEnableServer
+	 */
+	public boolean isZookeeperAdminEnableServer() {
+		return zookeeperAdminEnableServer;
+	}
+	
 }

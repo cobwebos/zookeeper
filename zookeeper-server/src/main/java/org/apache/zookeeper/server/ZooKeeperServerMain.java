@@ -148,9 +148,12 @@ public class ZooKeeperServerMain {
             zkServer.registerServerShutdownHandler(new ZooKeeperServerShutdownHandler(shutdownLatch));
 
             // Start Admin server
-            adminServer = AdminServerFactory.createAdminServer();
-            adminServer.setZooKeeperServer(zkServer);
-            adminServer.start();
+            if(config.zookeeperAdminEnableServer) {
+            	 adminServer = AdminServerFactory.createAdminServer();
+                 adminServer.setZooKeeperServer(zkServer);
+                 adminServer.start();
+            }
+            
 
             boolean needStartZKServer = true;
             if (config.getClientPortAddress() != null) {

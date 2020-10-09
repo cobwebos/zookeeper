@@ -67,6 +67,10 @@ public class QuorumPeerConfig {
     public static final String nextDynamicConfigFileSuffix = ".dynamic.next";
 
     private static boolean standaloneEnabled = true;
+    /**
+     * add zookeeper.admin.enableServer=false
+     */
+    private static boolean zookeeperAdminEnableServer = false;
     private static boolean reconfigEnabled = false;
 
     protected InetSocketAddress clientPortAddress;
@@ -970,5 +974,19 @@ public class QuorumPeerConfig {
     public static void setReconfigEnabled(boolean enabled) {
         reconfigEnabled = enabled;
     }
+
+	/**
+	 * @return the zookeeperAdminEnableServer
+	 */
+	public static boolean isZookeeperAdminEnableServer() {
+		return zookeeperAdminEnableServer;
+	}
+
+	/**
+	 * @param zookeeperAdminEnableServer the zookeeperAdminEnableServer to set
+	 */
+	public static void setZookeeperAdminEnableServer(boolean zookeeperAdminEnableServer) {
+		QuorumPeerConfig.zookeeperAdminEnableServer = zookeeperAdminEnableServer;
+	}
 
 }
